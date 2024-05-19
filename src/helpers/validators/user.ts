@@ -2,8 +2,8 @@ import z from "zod";
 
 export const userSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  surname: z.string(),
+  firstname: z.string(),
+  lastname: z.string(),
   email: z.string().email(),
   skills: z.array(z.string()),
   dateOfRegistration: z.date(),
@@ -12,8 +12,8 @@ export const userSchema = z.object({
 export type User = z.infer<typeof userSchema>;
 
 export const updateUserSchema = userSchema.pick({
-  name: true,
-  surname: true,
+  firstname: true,
+  lastname: true,
   email: true,
   skills: true,
 });
