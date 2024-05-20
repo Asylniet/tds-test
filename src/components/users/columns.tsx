@@ -18,11 +18,45 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { fuzzySort } from "@/helpers/fuzzyFilter";
+import { Checkbox } from "../ui/checkbox";
 
 export const columns: ColumnDef<User>[] = [
   {
-    header: "ID",
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value: boolean) =>
+          table.toggleAllPageRowsSelected(!!value)
+        }
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value: boolean) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+  },
+  {
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        ID
+        <ArrowUpDown className="ml-2 w-4 h-4" />
+      </Button>
+    ),
     accessorKey: "id",
+    filterFn: "equalsString",
   },
   {
     header: ({ column }) => (
@@ -35,11 +69,14 @@ export const columns: ColumnDef<User>[] = [
       </Button>
     ),
     accessorKey: "name",
+    accessorFn: (row) => `${row.firstname} ${row.lastname}`,
     cell: ({ row }) => (
       <div className="truncate">
         {row.original.firstname} {row.original.lastname}
       </div>
     ),
+    filterFn: "fuzzy",
+    sortingFn: fuzzySort,
   },
   {
     header: ({ column }) => (
@@ -52,6 +89,7 @@ export const columns: ColumnDef<User>[] = [
       </Button>
     ),
     accessorKey: "email",
+    filterFn: "includesString",
   },
   {
     header: "Skills",
