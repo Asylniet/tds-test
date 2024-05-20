@@ -20,6 +20,7 @@ import {
 import { Link } from "react-router-dom";
 import { fuzzySort } from "@/helpers/fuzzyFilter";
 import { Checkbox } from "../ui/checkbox";
+import { Badge } from "../ui/badge";
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -94,10 +95,30 @@ export const columns: ColumnDef<User>[] = [
   {
     header: "Skills",
     accessorKey: "skills",
+    cell: ({ row }) => (
+      <div className="flex flex-wrap gap-1">
+        {row.original.skills.map((skill) => (
+          <Badge key={skill} variant="outline">
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    ),
   },
   {
-    header: "Date of Registration",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Date of Registration
+        <ArrowUpDown className="ml-2 w-4 h-4" />
+      </Button>
+    ),
     accessorKey: "dateOfRegistration",
+    cell: ({ row }) => (
+      <div>{row.original.dateOfRegistration.toLocaleDateString("ru-RU")}</div>
+    ),
   },
   {
     id: "actions",
@@ -124,14 +145,14 @@ export const columns: ColumnDef<User>[] = [
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
+              onClick={() => navigator.clipboard.writeText(String(user.id))}
             >
               Edit
               <PenIcon className="ml-auto w-4 h-4" />
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
+              onClick={() => navigator.clipboard.writeText(String(user.id))}
             >
               Delete
               <TrashIcon className="ml-auto w-4 h-4" />

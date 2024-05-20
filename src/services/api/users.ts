@@ -1,17 +1,22 @@
 import { UpdateUser, User } from "@/helpers/validators/user";
 import { axiosInstance } from "./api";
+import { joinArraysOnId } from "@/helpers/joinArrays";
+import { usersMockData } from "@/mock/data";
 
 class UsersAPI {
   private axios = axiosInstance("users");
 
   getUsers = async () => {
     const response = await this.axios.get<User[]>("/");
-    return response.data;
+    const users = joinArraysOnId(response.data, usersMockData);
+    return users;
   };
 
   getUser = async (id: string) => {
     const response = await this.axios.get<User>(`/${id}`);
-    return response.data;
+    const userMeta = usersMockData.find((user) => user.id === response.data.id);
+    const user = { ...response.data, ...userMeta };
+    return user;
   };
 
   createUser = async (data: UpdateUser) => {
