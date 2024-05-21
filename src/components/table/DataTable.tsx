@@ -17,11 +17,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "../ui/button";
 import { ReactNode, useEffect, useState } from "react";
 import { fuzzyFilter } from "@/helpers/fuzzyFilter";
 import DebouncedInput from "../DebouncedInput";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { DataTablePagination } from "./TablePagination";
 
 interface DataTableProps<TData, TValue> {

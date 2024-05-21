@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useState } from "react";
 import { Command } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
 import { Skill } from "@/helpers/validators/skill";
