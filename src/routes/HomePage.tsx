@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/DataTable";
+import { DataTable } from "@/components/table/DataTable";
 import AddNewUserButton from "@/components/users/table/AddNewUserButton";
 import { columns } from "@/components/users/table/columns";
 import { User } from "@/helpers/validators/user";

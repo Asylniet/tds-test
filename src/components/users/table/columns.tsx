@@ -1,15 +1,10 @@
 import { User } from "@/helpers/validators/user";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-
 import { fuzzySort } from "@/helpers/fuzzyFilter";
 import { Checkbox } from "../../ui/checkbox";
 import { Badge } from "../../ui/badge";
-import DeleteUserAlertDialog from "./DeleteUserAlertDialog";
-import { useState } from "react";
 import UserTableActions from "../UserTableActions";
+import { ColumnHeader } from "@/components/table/ColumnHeader";
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -36,28 +31,12 @@ export const columns: ColumnDef<User>[] = [
     enableSorting: false,
   },
   {
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        ID
-        <ArrowUpDown className="ml-2 w-4 h-4" />
-      </Button>
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="ID" />,
     accessorKey: "id",
     filterFn: "equalsString",
   },
   {
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        Name
-        <ArrowUpDown className="ml-2 w-4 h-4" />
-      </Button>
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="Name" />,
     accessorKey: "name",
     accessorFn: (row) => `${row.firstname} ${row.lastname}`,
     cell: ({ row }) => (
@@ -69,15 +48,7 @@ export const columns: ColumnDef<User>[] = [
     sortingFn: fuzzySort,
   },
   {
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        Email
-        <ArrowUpDown className="ml-2 w-4 h-4" />
-      </Button>
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="Email" />,
     accessorKey: "email",
     filterFn: "includesString",
   },
@@ -96,13 +67,7 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        Date of Registration
-        <ArrowUpDown className="ml-2 w-4 h-4" />
-      </Button>
+      <ColumnHeader column={column} title="Date of Registration" />
     ),
     accessorKey: "dateOfRegistration",
     cell: ({ row }) => (

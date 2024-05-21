@@ -17,11 +17,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { ReactNode, useEffect, useState } from "react";
 import { fuzzyFilter } from "@/helpers/fuzzyFilter";
-import DebouncedInput from "./DebouncedInput";
+import DebouncedInput from "../DebouncedInput";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { DataTablePagination } from "./TablePagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -79,33 +80,7 @@ export function DataTable<TData, TValue>({
           className="flex-1 shadow p-2 border border-block font-lg"
           placeholder="Search all columns..."
         />
-        <div className="min-w-fit text-muted-foreground text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
         {ActionComponent ? ActionComponent : null}
-        <div className="flex items-center space-x-2 ml-auto py-4">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <ChevronLeftIcon className="w-4 h-4" />
-          </Button>
-          <span className="min-w-fit text-sm">
-            Page {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount()}
-          </span>
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <ChevronRightIcon className="w-4 h-4" />
-          </Button>
-        </div>
       </div>
       <div className="h-2" />
       <div className="border rounded-md">
@@ -158,6 +133,8 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      <div className="h-2" />
+      <DataTablePagination table={table} />
     </div>
   );
 }
