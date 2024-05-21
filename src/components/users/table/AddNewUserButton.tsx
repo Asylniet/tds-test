@@ -5,6 +5,9 @@ import { PlusSquareIcon } from "lucide-react";
 
 type AddNewUserButtonProps = {};
 
+/**
+ * Renders a button component for adding a new user.
+ */
 const AddNewUserButton: FC<AddNewUserButtonProps> = () => {
   return (
     <Button asChild variant="outline">

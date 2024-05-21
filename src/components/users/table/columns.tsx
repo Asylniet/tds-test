@@ -3,7 +3,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { fuzzySort } from "@/helpers/fuzzyFilter";
 import { Checkbox } from "../../ui/checkbox";
 import { Badge } from "../../ui/badge";
-import UserTableActions from "../UserTableActions";
+import UserTableActions from "./UserTableActions";
 import { ColumnHeader } from "@/components/table/ColumnHeader";
 
 export const columns: ColumnDef<User>[] = [

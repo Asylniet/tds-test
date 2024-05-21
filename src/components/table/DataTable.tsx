@@ -28,6 +28,14 @@ interface DataTableProps<TData, TValue> {
   ActionComponent?: ReactNode;
 }
 
+/**
+ * Renders a data table component.
+ *
+ * @template TData - The type of the data in the table.
+ * @template TValue - The type of the value in the table.
+ * @param {DataTableProps<TData, TValue>} props - The props for the DataTable component.
+ * @returns {JSX.Element} - The rendered DataTable component.
+ */
 export function DataTable<TData, TValue>({
   columns,
   data,

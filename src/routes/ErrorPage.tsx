@@ -4,6 +4,10 @@ import { useRouteError } from "react-router-dom";
 
 type ErrorPageProps = {};
 
+/**
+ * ErrorPage component displays an error message when an unexpected error occurs.
+ * @component
+ */
 const ErrorPage: FC<ErrorPageProps> = () => {
   const error = useRouteError() as PageError | Error;
 

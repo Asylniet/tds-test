@@ -4,6 +4,10 @@ import { Outlet } from "react-router-dom";
 
 type RootProps = {};
 
+/**
+ * Root component for the application.
+ * Renders the Providers component and the Outlet component.
+ */
 const Root: FC<RootProps> = () => {
   return (
     <Providers>

@@ -16,6 +16,14 @@ interface ColumnHeaderProps<TData, TValue>
   title: string;
 }
 
+/**
+ * Renders a column header component.
+ *
+ * @template TData - The type of data in the table.
+ * @template TValue - The type of value in the column.
+ * @param {ColumnHeaderProps<TData, TValue>} props - The props for the column header.
+ * @returns {JSX.Element} - The rendered column header component.
+ */
 export function ColumnHeader<TData, TValue>({
   column,
   title,

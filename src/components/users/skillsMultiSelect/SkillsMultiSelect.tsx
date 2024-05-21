@@ -12,6 +12,15 @@ type SkillsMultiSelectProps = {
   onChange?: (values: Skill[]) => void;
 };
 
+/**
+ * SkillsMultiSelect component.
+ *
+ * @component
+ * @param {SkillsMultiSelectProps} props - The component props.
+ * @param {Array<Skill>} props.userSkills - The array of user skills.
+ * @param {Function} props.onChange - The function to handle skill selection change.
+ * @returns {JSX.Element} The rendered SkillsMultiSelect component.
+ */
 const SkillsMultiSelect: FC<SkillsMultiSelectProps> = ({
   userSkills,
   onChange,

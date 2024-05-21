@@ -14,6 +14,17 @@ type SelectableListProps = {
   open: boolean;
 };
 
+/**
+ * A component that renders a selectable list of items.
+ *
+ * @component
+ * @param {SelectableListProps} props - The props for the SelectableList component.
+ * @param {Array<string>} props.selectables - The list of selectable items.
+ * @param {boolean} props.open - Indicates whether the list is open or not.
+ * @param {string} props.inputValue - The current input value.
+ * @param {Function} props.onSelect - The callback function to handle item selection.
+ * @returns {JSX.Element} The rendered SelectableList component.
+ */
 const SelectableList: FC<SelectableListProps> = ({
   selectables,
   open,

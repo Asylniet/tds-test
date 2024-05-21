@@ -6,6 +6,12 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import useUserStore from "@/store/userStore";
 
+/**
+ * Custom hook for managing user form state and submission.
+ *
+ * @param user - Optional user object to pre-fill the form with.
+ * @returns An object containing the form state and the onSubmit function.
+ */
 export const useUserForm = (user?: User) => {
   const { addUser, updateUser } = useUserStore();
   const navigate = useNavigate();

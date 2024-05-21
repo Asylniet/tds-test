@@ -8,6 +8,13 @@ type MultiSelectBadgesProps = {
   handleUnselect: (skill: Skill) => void;
 };
 
+/**
+ * Renders a list of badges for the selected skills.
+ * @param {Object} props - The component props.
+ * @param {string[]} props.selected - The array of selected skills.
+ * @param {Function} props.handleUnselect - The function to handle unselecting a skill.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const MultiSelectBadges: FC<MultiSelectBadgesProps> = ({
   selected,
   handleUnselect,

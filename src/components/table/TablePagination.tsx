@@ -19,6 +19,13 @@ interface DataTablePaginationProps<TData> {
   table: Table<TData>;
 }
 
+/**
+ * Renders the pagination component for a data table.
+ *
+ * @template TData - The type of data in the table.
+ * @param {DataTablePaginationProps<TData>} props - The component props.
+ * @returns {JSX.Element} - The pagination component.
+ */
 export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {

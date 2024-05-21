@@ -9,14 +9,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 import { MoreHorizontal, PenIcon, TrashIcon } from "lucide-react";
-import { Button } from "../ui/button";
-import DeleteUserAlertDialog from "./table/DeleteUserAlertDialog";
+import { Button } from "../../ui/button";
+import DeleteUserAlertDialog from "./DeleteUserAlertDialog";
 import { User } from "@/helpers/validators/user";
 
 type UserTableActionsProps = {
   user: User;
 };
 
+/**
+ * Renders the actions for a user in a table.
+ *
+ * @component
+ * @param {UserTableActionsProps} props - The component props.
+ * @param {User} props.user - The user object.
+ * @returns {JSX.Element} The rendered component.
+ */
 const UserTableActions: FC<UserTableActionsProps> = ({ user }) => {
   const [open, setOpen] = useState(false);
   return (

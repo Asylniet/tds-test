@@ -16,6 +16,14 @@ type UserFormCardProps = {
   user?: User;
 };
 
+/**
+ * Renders a card component for creating or updating a user.
+ *
+ * @component
+ * @param {UserFormCardProps} props - The component props.
+ * @param {User} props.user - The user object to be updated. If null, a new user will be created.
+ * @returns {JSX.Element} The rendered UserFormCard component.
+ */
 const UserFormCard: FC<UserFormCardProps> = ({ user }) => {
   const title = user ? `Update a user` : "Create a new user";
   const description = user

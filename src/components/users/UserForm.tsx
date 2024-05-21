@@ -19,6 +19,15 @@ type UserFormProps = {
   user?: User;
 };
 
+/**
+ * UserForm component.
+ * Renders a form for editing user details.
+ *
+ * @component
+ * @param {UserFormProps} props - The component props.
+ * @param {User} props.user - The user object containing the initial values for the form fields.
+ * @returns {JSX.Element} The rendered UserForm component.
+ */
 const UserForm: FC<UserFormProps> = ({ user }) => {
   const { form, onSubmit } = useUserForm(user);
   return (

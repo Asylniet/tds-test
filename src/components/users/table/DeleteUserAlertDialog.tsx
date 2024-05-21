@@ -20,6 +20,13 @@ type DeleteUserAlertDialogProps = {
   userId: User["id"];
 };
 
+/**
+ * Component for displaying an alert dialog to confirm the deletion of a user.
+ * @param open - Boolean indicating whether the alert dialog is open.
+ * @param onOpenChange - Function to handle the change in the open state of the alert dialog.
+ * @param userId - The ID of the user to be deleted.
+ * @returns The DeleteUserAlertDialog component.
+ */
 const DeleteUserAlertDialog: FC<DeleteUserAlertDialogProps> = ({
   open,
   onOpenChange,

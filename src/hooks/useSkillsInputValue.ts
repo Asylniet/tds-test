@@ -1,6 +1,11 @@
 import { Skill } from "@/helpers/validators/skill";
 import { useCallback, useRef, useState, KeyboardEvent } from "react";
 
+/**
+ * Custom hook for managing skills input value and related functionality.
+ * @param setSelected - React state setter function for selected skills.
+ * @returns An object containing input reference, input value, input value setter, and keydown event handler.
+ */
 export const useSkillsInputValue = (
   setSelected: React.Dispatch<React.SetStateAction<Skill[]>>
 ) => {

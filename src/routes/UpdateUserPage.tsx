@@ -6,6 +6,11 @@ import NotFound from "@/components/layout/NotFound";
 
 type UpdateUserPageProps = {};
 
+/**
+ * Renders the UpdateUserPage component.
+ *
+ * @returns The rendered UpdateUserPage component.
+ */
 const UpdateUserPage: FC<UpdateUserPageProps> = () => {
   const user = useLoaderData() as User;
 
