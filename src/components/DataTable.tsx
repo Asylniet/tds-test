@@ -1,9 +1,6 @@
-"use client";
-
 import {
   ColumnDef,
   ColumnFiltersState,
-  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -21,18 +18,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "./ui/button";
-import { useEffect, useReducer, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { fuzzyFilter } from "@/helpers/fuzzyFilter";
 import DebouncedInput from "./DebouncedInput";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  ActionComponent?: ReactNode;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  ActionComponent,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
@@ -72,37 +72,38 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="p-2">
-      <div className="flex items-center">
+      <div className="flex items-center gap-2">
         <DebouncedInput
           value={globalFilter ?? ""}
           onChange={(value) => setGlobalFilter(String(value))}
-          className="shadow p-2 border border-block font-lg"
+          className="flex-1 shadow p-2 border border-block font-lg"
           placeholder="Search all columns..."
         />
-        <div className="flex-1 text-muted-foreground text-sm">
+        <div className="min-w-fit text-muted-foreground text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
+        {ActionComponent ? ActionComponent : null}
         <div className="flex items-center space-x-2 ml-auto py-4">
           <Button
             variant="outline"
-            size="sm"
+            size="icon"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            <ChevronLeftIcon className="w-4 h-4" />
           </Button>
-          <span>
+          <span className="min-w-fit text-sm">
             Page {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </span>
           <Button
             variant="outline"
-            size="sm"
+            size="icon"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            <ChevronRightIcon className="w-4 h-4" />
           </Button>
         </div>
       </div>

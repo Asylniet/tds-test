@@ -1,4 +1,5 @@
 import { DataTable } from "@/components/DataTable";
+import AddNewUserButton from "@/components/users/AddNewUserButton";
 import { columns } from "@/components/users/columns";
 import { User } from "@/helpers/validators/user";
 import { FC } from "react";
@@ -8,7 +9,13 @@ type HomePageProps = {};
 
 const HomePage: FC<HomePageProps> = () => {
   const users = useLoaderData() as User[];
-  return <DataTable columns={columns} data={users} />;
+  return (
+    <DataTable
+      columns={columns}
+      data={users}
+      ActionComponent={<AddNewUserButton />}
+    />
+  );
 };
 
 export default HomePage;
