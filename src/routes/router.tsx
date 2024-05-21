@@ -5,6 +5,7 @@ import HomePage from "./HomePage";
 import { usersAPI } from "@/services/api/users";
 import UpdateUserPage from "./UpdateUserPage";
 import CreateUserPage from "./CreateUserPage";
+import NotFound from "@/components/layout/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -28,5 +29,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // { path: "*", element: <NotFound /> },
+  { path: "*", element: <NotFound message="404, page not found" /> },
 ]);
