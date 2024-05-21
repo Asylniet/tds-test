@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { MoreHorizontal, PenIcon, TrashIcon } from "lucide-react";
 import { Button } from "../ui/button";
-import DeleteUserAlertDialog from "./DeleteUserAlertDialog";
+import DeleteUserAlertDialog from "./table/DeleteUserAlertDialog";
 import { User } from "@/helpers/validators/user";
 
 type UserTableActionsProps = {

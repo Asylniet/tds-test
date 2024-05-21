@@ -4,7 +4,7 @@ import {
   CommandGroup,
   CommandItem,
   CommandList,
-} from "../ui/command";
+} from "../../ui/command";
 import { Skill } from "@/helpers/validators/skill";
 
 type SelectableListProps = {

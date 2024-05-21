@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/DataTable";
-import AddNewUserButton from "@/components/users/AddNewUserButton";
-import { columns } from "@/components/users/columns";
+import AddNewUserButton from "@/components/users/table/AddNewUserButton";
+import { columns } from "@/components/users/table/columns";
 import { User } from "@/helpers/validators/user";
 import { FC } from "react";
 import { useLoaderData } from "react-router-dom";

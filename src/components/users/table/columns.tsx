@@ -5,11 +5,11 @@ import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { fuzzySort } from "@/helpers/fuzzyFilter";
-import { Checkbox } from "../ui/checkbox";
-import { Badge } from "../ui/badge";
+import { Checkbox } from "../../ui/checkbox";
+import { Badge } from "../../ui/badge";
 import DeleteUserAlertDialog from "./DeleteUserAlertDialog";
 import { useState } from "react";
-import UserTableActions from "./UserTableActions";
+import UserTableActions from "../UserTableActions";
 
 export const columns: ColumnDef<User>[] = [
   {

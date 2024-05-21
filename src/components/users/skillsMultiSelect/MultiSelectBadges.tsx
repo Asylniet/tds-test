@@ -1,6 +1,6 @@
 import { Skill } from "@/helpers/validators/skill";
 import { FC } from "react";
-import { Badge } from "../ui/badge";
+import { Badge } from "../../ui/badge";
 import { X } from "lucide-react";
 
 type MultiSelectBadgesProps = {

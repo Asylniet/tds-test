@@ -8,7 +8,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../ui/alert-dialog";
+} from "../../ui/alert-dialog";
 import { User } from "@/helpers/validators/user";
 import { usersAPI } from "@/services/api/users";
 import { toast } from "sonner";
