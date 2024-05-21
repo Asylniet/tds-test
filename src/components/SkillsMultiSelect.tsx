@@ -29,6 +29,7 @@ const SkillsMultiSelect: FC<SkillsMultiSelectProps> = ({
   onChange,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isDirty, setIsDirty] = useState(false);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Skill[]>(userSkills);
   const [inputValue, setInputValue] = useState("");
@@ -60,7 +61,8 @@ const SkillsMultiSelect: FC<SkillsMultiSelectProps> = ({
   );
 
   useEffect(() => {
-    onChange?.(selected);
+    if (selected.length > 0) setIsDirty(true);
+    isDirty && onChange?.(selected);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
