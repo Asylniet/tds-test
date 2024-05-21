@@ -9,15 +9,17 @@ import { useLoaderData } from "react-router-dom";
 type HomePageProps = {};
 
 const HomePage: FC<HomePageProps> = () => {
-  const users = useLoaderData() as User[];
-  const { setUsers } = useUserStore();
+  const _users = useLoaderData() as User[];
+  const { setUsers, users } = useUserStore();
   useEffect(() => {
-    setUsers(users);
-  }, [setUsers, users]);
+    if (users) return;
+    setUsers(_users);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setUsers, _users]);
   return (
     <DataTable
       columns={columns}
-      data={users}
+      data={users || []}
       ActionComponent={<AddNewUserButton />}
     />
   );

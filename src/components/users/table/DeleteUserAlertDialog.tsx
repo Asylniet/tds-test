@@ -12,6 +12,7 @@ import {
 import { User } from "@/helpers/validators/user";
 import { usersAPI } from "@/services/api/users";
 import { toast } from "sonner";
+import useUserStore from "@/store/userStore";
 
 type DeleteUserAlertDialogProps = {
   open: boolean;
@@ -24,13 +25,13 @@ const DeleteUserAlertDialog: FC<DeleteUserAlertDialogProps> = ({
   onOpenChange,
   userId,
 }) => {
+  const { deleteUser } = useUserStore();
   const handleDelete = async () => {
-    console.log("Deleting user");
     try {
-      console.log("userId", userId);
       await usersAPI.deleteUser(userId).then(() => {
         toast.success("User deleted successfully");
       });
+      deleteUser(userId);
     } catch (error) {
       toast.error("An error occurred while deleting the user");
     }
