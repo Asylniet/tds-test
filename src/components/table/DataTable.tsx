@@ -77,7 +77,7 @@ export function DataTable<TData, TValue>({
         <DebouncedInput
           value={globalFilter ?? ""}
           onChange={(value) => setGlobalFilter(String(value))}
-          className="flex-1 shadow p-2 border border-block font-lg"
+          className="flex-1 font-lg"
           placeholder="Search all columns..."
         />
         {ActionComponent ? ActionComponent : null}
