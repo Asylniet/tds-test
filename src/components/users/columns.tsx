@@ -1,26 +1,15 @@
 import { User } from "@/helpers/validators/user";
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  EyeIcon,
-  MoreHorizontal,
-  PenIcon,
-  TrashIcon,
-  ArrowUpDown,
-} from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+
 import { fuzzySort } from "@/helpers/fuzzyFilter";
 import { Checkbox } from "../ui/checkbox";
 import { Badge } from "../ui/badge";
+import DeleteUserAlertDialog from "./DeleteUserAlertDialog";
+import { useState } from "react";
+import UserTableActions from "./UserTableActions";
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -123,38 +112,6 @@ export const columns: ColumnDef<User>[] = [
   {
     id: "actions",
     header: "Actions",
-    cell: ({ row }) => {
-      const user = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="p-0 w-8 h-8">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="w-4 h-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              className="transition-colors cursor-pointer"
-              asChild
-            >
-              <Link to={`/user/${user.id}`}>
-                Edit
-                <PenIcon className="ml-auto w-4 h-4" />
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(String(user.id))}
-            >
-              Delete
-              <TrashIcon className="ml-auto w-4 h-4" />
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
+    cell: ({ row }) => <UserTableActions user={row.original} />,
   },
 ];
