@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { fields } from "@/components/users/fields";
-import SkillsMultiSelect from "../SkillsMultiSelect";
+import SkillsMultiSelect from "./SkillsMultiSelect";
 import { User } from "@/helpers/validators/user";
 import { useUserForm } from "@/hooks/useUserForm";
 
