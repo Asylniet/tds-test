@@ -30,7 +30,7 @@ const UserFormCard: FC<UserFormCardProps> = ({ user }) => {
     ? `Update the info about ${user.firstname} ${user.lastname}`
     : "Create a new user";
   return (
-    <Card className="m-4">
+    <Card className="m-1 sm:m-4">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Button variant="outline" size="icon" asChild>
