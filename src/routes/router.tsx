@@ -3,7 +3,8 @@ import Root from "./Root";
 import ErrorPage from "./ErrorPage";
 import HomePage from "./HomePage";
 import { usersAPI } from "@/services/api/users";
-import UserPage from "./UserPage";
+import UpdateUserPage from "./UpdateUserPage";
+import CreateUserPage from "./CreateUserPage";
 
 export const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/user/:id",
-        element: <UserPage />,
+        element: <UpdateUserPage />,
         loader: usersAPI.getUser,
+      },
+      {
+        path: "/user/new",
+        element: <CreateUserPage />,
       },
     ],
   },

@@ -122,6 +122,7 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     id: "actions",
+    header: "Actions",
     cell: ({ row }) => {
       const user = row.original;
 
@@ -136,19 +137,13 @@ export const columns: ColumnDef<User>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              className="data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground transition-colors cursor-pointer"
+              className="transition-colors cursor-pointer"
               asChild
             >
               <Link to={`/user/${user.id}`}>
-                View
-                <EyeIcon className="ml-auto w-4 h-4" />
+                Edit
+                <PenIcon className="ml-auto w-4 h-4" />
               </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(String(user.id))}
-            >
-              Edit
-              <PenIcon className="ml-auto w-4 h-4" />
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem

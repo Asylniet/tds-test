@@ -83,7 +83,7 @@ export function DataTable<TData, TValue>({
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
-        <div className="flex space-x-2 ml-auto py-4">
+        <div className="flex items-center space-x-2 ml-auto py-4">
           <Button
             variant="outline"
             size="sm"
@@ -92,6 +92,10 @@ export function DataTable<TData, TValue>({
           >
             Previous
           </Button>
+          <span>
+            Page {table.getState().pagination.pageIndex + 1} of{" "}
+            {table.getPageCount()}
+          </span>
           <Button
             variant="outline"
             size="sm"

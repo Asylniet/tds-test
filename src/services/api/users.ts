@@ -25,12 +25,12 @@ class UsersAPI {
     return response.data;
   };
 
-  updateUser = async (id: string, data: UpdateUser) => {
+  updateUser = async (id: User["id"], data: UpdateUser) => {
     const response = await this.axios.put(`/${id}`, data);
     return response.data;
   };
 
-  deleteUser = async (id: string) => {
+  deleteUser = async (id: User["id"]) => {
     const response = await this.axios.delete(`/${id}`);
     return response.data;
   };
