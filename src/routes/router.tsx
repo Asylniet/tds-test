@@ -3,6 +3,7 @@ import Root from "./Root";
 import ErrorPage from "./ErrorPage";
 import HomePage from "./HomePage";
 import { usersAPI } from "@/services/api/users";
+import UserPage from "./UserPage";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,11 @@ export const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
         loader: usersAPI.getUsers,
+      },
+      {
+        path: "/user/:id",
+        element: <UserPage />,
+        loader: usersAPI.getUser,
       },
     ],
   },

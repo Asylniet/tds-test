@@ -3,10 +3,12 @@ import { skillSchema } from "./skill";
 
 export const userSchema = z.object({
   id: z.number(),
-  firstname: z.string(),
-  lastname: z.string(),
+  firstname: z.string().min(1),
+  lastname: z.string().min(1),
   email: z.string().email(),
-  skills: z.array(skillSchema),
+  skills: z.array(skillSchema).refine((value) => value.some((item) => item), {
+    message: "You have to select at least one item.",
+  }),
   dateOfRegistration: z.date(),
 });
 

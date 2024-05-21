@@ -44,3 +44,5 @@ export const skillSchema = z.enum([
 ]);
 
 export type Skill = z.infer<typeof skillSchema>;
+
+export const skills = Object.values(skillSchema.Enum);

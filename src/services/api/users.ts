@@ -2,6 +2,7 @@ import { UpdateUser, User } from "@/helpers/validators/user";
 import { axiosInstance } from "./api";
 import { joinArraysOnId } from "@/helpers/joinArrays";
 import { usersMockData } from "@/mock/data";
+import { LoaderFunctionArgs } from "react-router-dom";
 
 class UsersAPI {
   private axios = axiosInstance("users");
@@ -12,8 +13,8 @@ class UsersAPI {
     return users;
   };
 
-  getUser = async (id: string) => {
-    const response = await this.axios.get<User>(`/${id}`);
+  getUser = async ({ params }: LoaderFunctionArgs<{ id: string }>) => {
+    const response = await this.axios.get<User>(`/${params.id}`);
     const userMeta = usersMockData.find((user) => user.id === response.data.id);
     const user = { ...response.data, ...userMeta };
     return user;
